@@ -7,3 +7,4 @@
 
 3.[Link](https://github.com/cph-ms782/review_week38_tuesday/blob/master/src/main/java/test/Tester.java)  
 
+4.[Link](https://github.com/cph-ms782/review_week38_tuesday/blob/7475e9e6acd397f7fbf841823579e9163ab8be5a/src/main/java/entities/Customer.java#L27)  
