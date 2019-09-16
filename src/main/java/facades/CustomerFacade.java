@@ -49,7 +49,7 @@ public class CustomerFacade {
 
 
     public Customer addCustomer(String firstName, String lastName) {
-        Customer cust = new Customer(firstName, firstName);
+        Customer cust = new Customer(firstName, lastName);
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
