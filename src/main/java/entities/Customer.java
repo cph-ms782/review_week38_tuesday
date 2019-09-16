@@ -3,11 +3,14 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 
 /**
@@ -21,11 +24,17 @@ public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_ID")
     private Long customerID;
     private String firstName;
     private String lastName;
-    
-    @ElementCollection()
+
+    @ElementCollection
+    @CollectionTable(
+            name = "Hobbies",
+            joinColumns = @JoinColumn(name = "customer_ID")
+    )
+    @Column(name = "Hobby")
     private List<String> hobbies = new ArrayList();
 
     public Customer() {
