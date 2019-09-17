@@ -11,3 +11,5 @@ target
 *.iml
 /nbproject/
 nb-configuration.xml
+
+src/main/java/entities/Customer.java
