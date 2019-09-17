@@ -27,12 +27,12 @@ Execute and observe the generated columns and values. Make sure you understand t
 
 ## JPA Entity Mappings  
 
-### 1) One to One – Unidirectional  
+### 1) [One to One – Unidirectional](https://github.com/cph-ms782/review_week38_tuesday/tree/master/OneToOne-Unidirectional/src/main/java)  
 * how an OO-language implements OneToOne relations and how a relational database does the same.
 
 OO implements OneToOne by the annotation and the reference variable to the other entity. TheDB does it by a foreign key.  
 
-### 2) One to One – Bidirectional  
+### 2) [One to One – Bidirectional](https://github.com/cph-ms782/review_week38_tuesday/tree/master/OneToOne-Bidirectional/src/main/java)  
   * how would you show bidirectional using UML, and how is it implemented in your two entity classes:  
   
 _UML: Two boxes with arrow connecting both boxes both ways and two 1's above arrow.  
@@ -47,7 +47,7 @@ _Addresse now has a @OneToOne(cascade = CascadeType.PERSIST, **mappedBy = "addre
 _There's no difference in the two tables. The database can always go both ways when there's a foreign key. The objects has to be told to go both ways._
  
 
-### 3) OneToMany (unidirectional)  
+### 3) [OneToMany (unidirectional)](https://github.com/cph-ms782/review_week38_tuesday/tree/master/OneToMany-Unidirectional/src/main/java)  
  * How many tables were generated? Explain the purpose of each of the tables  
 
 __ 
@@ -58,7 +58,7 @@ _Extra Customer_ID column from address table is gone_
 
 
 
-### 4) OneToMany (bidirectional)  
+### 4) [OneToMany (bidirectional)](https://github.com/cph-ms782/review_week38_tuesday/tree/master/OneToMany-Bidirectional/src/main/java)  
  * Observe the generated code, especially where we find the mappedBy value. Explain  
  
 __
