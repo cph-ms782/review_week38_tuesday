@@ -26,12 +26,6 @@ public class Customer implements Serializable {
     private String firstName;
     private String lastName;
     
-//    @OneToOne(cascade = CascadeType.PERSIST)
-//    private Address address;
-
-    @ElementCollection
-    private List<String> hobbies = new ArrayList();
-    
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Address> addresses = new ArrayList();
     
@@ -51,21 +45,15 @@ public class Customer implements Serializable {
         this.firstName = firstName;
     }
 
-    public void addAddress(Address adr){
-        addresses.add(adr);
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
+      public void addAddress(Address adr){
+        this.addresses.add(adr);
+        if (adr.getCustomer()!= this) {
+            adr.setCustomer(this);
+        }
     }
     
-//    public Address getAddress() {
-//        return addresses;
-//    }
-
-    public void setAddress(Address address) {
-        this.addresses.add(address);
-//        this.address.setCustomer(this);
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
     public String getLastName() {
@@ -76,14 +64,6 @@ public class Customer implements Serializable {
         this.lastName = lastName;
     }
     
-    public void addHobby(String hobby) {
-        hobbies.add(hobby);
-    }
-
-    public String getHobbies() {
-        return String.join(",", hobbies);
-    }
-
     public Integer getId() {
         return id;
     }
@@ -92,48 +72,4 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.firstName);
-        hash = 29 * hash + Objects.hashCode(this.lastName);
-        hash = 29 * hash + Objects.hashCode(this.hobbies);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Customer other = (Customer) obj;
-        if (!Objects.equals(this.firstName, other.firstName)) {
-            return false;
-        }
-        if (!Objects.equals(this.lastName, other.lastName)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.hobbies, other.hobbies)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", hobbies=" + hobbies + '}';
-    }
-
-    
-    
 }

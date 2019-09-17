@@ -24,8 +24,6 @@ public class Address implements Serializable {
     private String street;
     private String city;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Customer_ID")
     private Customer customer;
 
     public Address() {
@@ -68,42 +66,5 @@ public class Address implements Serializable {
         this.city = city;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.street);
-        hash = 41 * hash + Objects.hashCode(this.city);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Address other = (Address) obj;
-        if (!Objects.equals(this.street, other.street)) {
-            return false;
-        }
-        if (!Objects.equals(this.city, other.city)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" + "id=" + id + ", street=" + street + ", city=" + city + '}';
-    }
 
 }
