@@ -28,22 +28,22 @@ public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_ID")
+    @Column(name = "CUSTOMER_ID")
     private Long customerID;
     private String firstName;
     private String lastName;
 
-    @ElementCollection
+    @ElementCollection()
     @CollectionTable(
-            name = "Hobbies",
-            joinColumns = @JoinColumn(name = "customer_ID")
+            name = "HOBBIES",
+            joinColumns = @JoinColumn(name = "CUSTOMER_ID")
     )
-    @Column(name = "Hobby")
+    @Column(name = "HOBBY")
     private List<String> hobbies = new ArrayList();
 
     @ElementCollection(fetch = FetchType.LAZY)
     @MapKeyColumn(name = "PHONE")
-    @Column(name = "Description")
+    @Column(name = "DESCRIPTION")
     private Map<String, String> phones = new HashMap();
 
     public Customer() {
@@ -82,17 +82,39 @@ public class Customer implements Serializable {
         hobbies.add(s);
     }
 
-    public String getHobbies() {
-        String listHobbies = null;
-        for (String hobby : hobbies) {
-            if (listHobbies == null) {
-                listHobbies = hobby + ",";
-            } else {
-                listHobbies += hobby + ",";
-            }
-        }
-        return listHobbies.substring(0, listHobbies.length() - 1);
+    public void setHobbies(List<String> hobbies) {
+        this.hobbies = hobbies;
     }
+
+    public void setPhones(Map<String, String> phones) {
+        this.phones = phones;
+    }
+
+    public List<String> getHobbies() {
+        return hobbies;
+    }
+
+    public Map<String, String> getPhones() {
+        return phones;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    
+    
+    
+//    public String getHobbies() {
+//        String listHobbies = null;
+//        for (String hobby : hobbies) {
+//            if (listHobbies == null) {
+//                listHobbies = hobby + ",";
+//            } else {
+//                listHobbies += hobby + ",";
+//            }
+//        }
+//        return listHobbies.substring(0, listHobbies.length() - 1);
+//    }
 
     public void addPhone(String phoneNo, String description) {
         phones.put(phoneNo, description);
